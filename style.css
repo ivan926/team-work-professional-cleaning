@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #004466;
+    font-weight: bold;
+}
+
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0, 68, 102, 0.7), rgba(0, 68, 102, 0.7)), url('https://images.unsplash.com/photo-1581578017421-cd7c2c32d989') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.btn {
+    display: inline-block;
+    background: #00a86b;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about, .services, .testimonials, .contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.services {
+    background: #004466;
+    color: white;
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.testimonials {
+    background: #e0f2f1;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+
+.contact input, .contact textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+footer {
+    background: #002233;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}

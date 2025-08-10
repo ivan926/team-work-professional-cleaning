@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShinyClean Services — Professional Home & Office Cleaning</title>
+  <meta name="description" content="Trusted blue & green cleaning service. House cleaning, office cleaning, move-in/out, and window washing. Get a free quote today." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧹</text></svg>">
+  <meta property="og:title" content="ShinyClean Services" />
+  <meta property="og:description" content="Fresh, spotless, and stress-free cleaning for homes and offices." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1581578017421-cd7c2c32d989" />
+  <style>
+    :root{
+      --blue-900:#0a2a3f;--blue-800:#0f3953;--blue-700:#104865;--blue-600:#145b7f;--blue-100:#e6f1f7;
+      --green-600:#0db37b;--green-500:#11c48a;--green-100:#e9faf3;
+      --text:#0f2230;--muted:#5b7283;--white:#fff;--bg:#f7fbfd;--card:#ffffff;--shadow:0 10px 30px rgba(10,42,63,.06);
+      --radius:16px;--radius-sm:12px;--maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;line-height:1.6;color:var(--text);background:var(--bg)}
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+    /* Header */
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:16px;top:16px;width:auto;height:auto;background:var(--white);padding:10px 14px;border-radius:10px;box-shadow:var(--shadow)}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid #eef3f6}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--blue-700);letter-spacing:.2px}
+    .brand .logo{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--green-500),#70e6bd)}
+    .brand .logo svg{width:22px;height:22px;color:#083042}
+    .nav a{font-weight:600;text-decoration:none;color:var(--blue-700)}
+    .nav .links{display:flex;gap:18px;align-items:center}
+    .btn{display:inline-block;background:var(--green-600);color:var(--white);padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 6px 16px rgba(17,196,138,.25)}
+    .btn:hover{filter:brightness(1.05)}
+    .menu{display:none}
+    /* Mobile drawer hidden by default */
+    .mobile{display:none}
+    @media (max-width:850px){
+      .links{display:none}
+      .menu{display:inline-flex;gap:8px;align-items:center}
+      .mobile{position:fixed;inset:64px 16px auto 16px;background:var(--white);border-radius:14px;box-shadow:var(--shadow);padding:14px;display:none;flex-direction:column;gap:8px}
+      .mobile a{padding:10px;border-radius:10px}
+      .mobile a:hover{background:var(--green-100)}
+      .mobile.show{display:flex}
+    }
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(1200px 600px at 80% -10%,rgba(17,196,138,.25),transparent 60%),linear-gradient(180deg,rgba(16,72,101,.25),transparent 50%)}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:64px 0}
+    @media (max-width:900px){.hero .wrap{grid-template-columns:1fr;padding:36px 0}}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--green-100);color:#0b7a56;font-weight:700;font-size:.85rem;margin-bottom:10px}
+    h1{font-size:clamp(1.9rem,3.2vw,3.2rem);line-height:1.15;margin:8px 0 14px;color:var(--blue-800)}
+    .sub{font-size:1.05rem;color:var(--muted);max-width:55ch}
+    .cta{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+    .cta .ghost{background:var(--white);border:1px solid #dce8ef;color:var(--blue-700)}
+    .hero-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .hero-card ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hero-card li{display:flex;gap:8px;align-items:flex-start}
+    .pill{width:10px;height:10px;border-radius:3px;background:var(--green-500);margin-top:6px}
+    .illus{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid #eaf1f5}
+    .illus img{aspect-ratio:16/11;object-fit:cover}
+    /* Sections */
+    section{padding:70px 0}
+    .section-h{font-size:clamp(1.5rem,2.4vw,2.2rem);margin:0 0 14px;color:var(--blue-800)}
+    .section-sub{color:var(--muted);margin:0 0 26px}
+    /* Services */
+    .services{background:linear-gradient(180deg,#f3f9fc,transparent)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid #edf4f7;border-radius:var(--radius-sm);box-shadow:var(--shadow);padding:18px}
+    .icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue-700),#1c6d95);color:white;margin-bottom:10px}
+    .card h3{margin:6px 0 6px;color:var(--blue-700)}
+    .card p{margin:0;color:var(--muted)}
+    @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.grid{grid-template-columns:1fr}}
+    /* Testimonials */
+    .testimonials{background:var(--green-100);border-top:1px solid #e6f3ef;border-bottom:1px solid #e6f3ef}
+    .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .quote{background:var(--white);border:1px solid #eaf3ef;border-left:4px solid var(--green-600);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+    .quote .name{font-weight:800;margin-top:8px;color:var(--blue-700)}
+    @media (max-width:900px){.t-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.t-grid{grid-template-columns:1fr}}
+    /* Contact */
+    .contact .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start}
+    @media (max-width:900px){.contact .wrap{grid-template-columns:1fr}}
+    form{background:var(--white);border:1px solid #e6eef3;border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+    .field label{font-weight:700;color:var(--blue-700)}
+    .field input,.field textarea, .field select{padding:12px 12px;border:1px solid #d9e6ee;border-radius:10px;font:inherit}
+    .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid #b8ecdb}
+    .aside{background:var(--blue-100);border:1px solid #ddecf5;border-radius:14px;padding:18px}
+    .aside .row{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+    .phone{font-weight:900;color:var(--blue-800)}
+    /* Footer */
+    footer{padding:26px 0;border-top:1px solid #e8eef3;color:#4b6677}
+    footer .mini{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .small{font-size:.9rem;color:#70899a}
+
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+  <script>
+    // Mobile menu toggle
+    function toggleMenu(){
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('button.menu');
+      const willShow = !menu.classList.contains('show');
+      menu.classList.toggle('show');
+      if (btn) btn.setAttribute('aria-expanded', String(willShow));
+    }
+    // Close mobile menu on nav click
+    function closeMenu(){
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('button.menu');
+      menu.classList.remove('show');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ShinyClean Services",
+    "image": "https://images.unsplash.com/photo-1581578017421-cd7c2c32d989",
+    "url": "https://example.com",
+    "telephone": "+1-123-456-7890",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Your City",
+      "addressRegion": "UT",
+      "postalCode": "00000",
+      "streetAddress": "123 Main St"
+    },
+    "areaServed": "Your County / Metro Area",
+    "servesCuisine": "",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="ShinyClean home">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M9 8l6 6"/><path d="M12 19l6-6"/><path d="M7 21l10-10"/></svg>
+        </span>
+        <span>ShinyClean</span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact" class="btn">Book Now</a>
+      </nav>
+      <button class="menu btn ghost" onclick="toggleMenu()" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
+    </div>
+    <div id="mobileMenu" class="mobile container" role="dialog" aria-label="Mobile navigation">
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+      <a href="#contact" class="btn" onclick="closeMenu()">Book Now</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container wrap">
+        <div>
+          <span class="tag">Trusted • Insured • Satisfaction Guaranteed</span>
+          <h1>Professional Cleaning for Homes & Offices</h1>
+          <p class="sub">We deliver hotel‑level clean with eco‑friendly products. One‑time deep cleans, recurring maintenance, and move‑in/out packages tailored to your space.</p>
+          <div class="cta">
+            <a class="btn" href="#contact">Get a Free Quote</a>
+            <a class="btn ghost" href="#services" aria-label="View services">See Services</a>
+          </div>
+          <div class="hero-card" aria-label="Highlights">
+            <ul>
+              <li><span class="pill" aria-hidden="true"></span> Background‑checked pros</li>
+              <li><span class="pill" aria-hidden="true"></span> Supplies included</li>
+              <li><span class="pill" aria-hidden="true"></span> Flexible scheduling</li>
+              <li><span class="pill" aria-hidden="true"></span> 5‑star average rating</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-h">About Us</h2>
+        <p class="section-sub">Locally owned, detail‑obsessed cleaners who treat your space like our own.</p>
+        <div class="grid" style="--cols:3">
+          <div class="card">
+            <div class="icon" aria-hidden="true">🏆</div>
+            <h3>Experienced</h3>
+            <p>Hundreds of happy clients and years of proven systems for spotless results.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🌿</div>
+            <h3>Eco‑Friendly</h3>
+            <p>Green products that are safe for kids, pets, and the planet.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🛡️</div>
+            <h3>Insured</h3>
+            <p>Fully insured & bonded. Your peace of mind is built‑in.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-h">Our Services</h2>
+        <p class="section-sub">Pick a package or mix & match to fit your space and schedule.</p>
+        <div class="grid">
+          <div class="card">
+            <div class="icon" aria-hidden="true">🏠</div>
+            <h3>Standard Home Clean</h3>
+            <p>Kitchen, bathrooms, living areas, and bedrooms—sparkling every time.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🧼</div>
+            <h3>Deep Clean</h3>
+            <p>Ceiling‑to‑floor attention including baseboards, fixtures, and inside appliances.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🚚</div>
+            <h3>Move‑In/Out</h3>
+            <p>Make moving day easy with a top‑to‑bottom reset of your old or new home.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🏢</div>
+            <h3>Office Cleaning</h3>
+            <p>Dust‑free desks, sanitized restrooms, and refreshed break rooms.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🪟</div>
+            <h3>Window Washing</h3>
+            <p>Streak‑free interior/exterior windows for brighter rooms.</p>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🐾</div>
+            <h3>Pet‑Friendly</h3>
+            <p>Handlers trained for homes with pets and allergy‑sensitive products.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2 class="section-h">Happy Clients</h2>
+        <div class="t-grid">
+          <blockquote class="quote">“Best cleaning service we’ve ever used. Reliable and thorough.”<div class="name">— Maria L.</div></blockquote>
+          <blockquote class="quote">“They made our move‑out spotless. Full deposit back!”<div class="name">— John P.</div></blockquote>
+          <blockquote class="quote">“Staff is friendly, on‑time, and detail oriented. 10/10.”<div class="name">— Aisha K.</div></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-h">Get a Free Quote</h2>
+        <p class="section-sub">Tell us about your space and preferred times. We’ll reply quickly.</p>
+        <div class="wrap">
+          <form action="https://formspree.io/f/yourformid" method="POST">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="_replyto" type="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="field">
+              <label for="service">Service</label>
+              <select id="service" name="service">
+                <option>Standard Home Clean</option>
+                <option>Deep Clean</option>
+                <option>Move‑In/Out</option>
+                <option>Office Cleaning</option>
+                <option>Window Washing</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Details</label>
+              <textarea id="message" name="message" rows="4" placeholder="Square footage, rooms, preferred dates…" required></textarea>
+            </div>
+            <button class="btn" type="submit">Send Request</button>
+          </form>
+          <aside class="aside">
+            <div class="row"><div class="icon" aria-hidden="true">📍</div><div>
+              <strong>Service Area</strong><br/>Your City • Nearby Suburbs
+            </div></div>
+            <div class="row"><div class="icon" aria-hidden="true">📞</div><div>
+              <strong>Call/Text</strong><br/><span class="phone">(123) 456‑7890</span>
+            </div></div>
+            <div class="row"><div class="icon" aria-hidden="true">⏱️</div><div>
+              <strong>Hours</strong><br/>Mon–Sat 8am–6pm
+            </div></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container mini">
+      <div class="brand"><span class="logo" aria-hidden="true"></span><span>ShinyClean</span></div>
+      <div class="small">© <span id="year"></span> ShinyClean Services. All rights reserved.</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
