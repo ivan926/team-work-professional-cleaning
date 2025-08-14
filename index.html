@@ -197,15 +197,15 @@
     function toggleMenu(){
       const menu = document.getElementById('mobileMenu2');
       const btn = document.querySelector('button.hamburger');
-      const willShow = !menu.classList.contains('show');
-      menu.classList.toggle('show');
+      const willShow = !menu.classList.contains('open');
+      menu.classList.toggle('open');
       if (btn) btn.setAttribute('aria-expanded', String(willShow));
     }
     // Close mobile menu on nav click
     function closeMenu(){
       const menu = document.getElementById('mobileMenu2');
       const btn = document.querySelector('button.hamburger');
-      menu.classList.remove('show');
+      menu.classList.remove('open');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
   </script>

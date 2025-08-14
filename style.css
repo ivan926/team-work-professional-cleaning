@@ -1,177 +1,3 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-header .logo {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #004466;
-    font-weight: bold;
-}
-
-.hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0, 68, 102, 0.7), rgba(0, 68, 102, 0.7)), url('https://images.unsplash.com/photo-1581578017421-cd7c2c32d989') center/cover no-repeat;
-    color: white;
-    text-align: center;
-    padding-top: 150px;
-}
-
-.btn {
-    display: inline-block;
-    background: #00a86b;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.about, .services, .testimonials, .contact {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.services {
-    background: #004466;
-    color: white;
-}
-
-.service-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.service {
-    background: white;
-    color: black;
-    padding: 20px;
-    border-radius: 5px;
-    width: 250px;
-}
-
-.testimonials {
-    background: #e0f2f1;
-}
-
-.contact form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: auto;
-}
-
-.contact input, .contact textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-footer {
-    background: #002233;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-/* Mobile nav components (hidden by default on desktop) */
-.hamburger { display: none; background: none; border: 0; font-size: 28px; line-height: 1; cursor: pointer; }
-.mobile-menu { display: none; }
-.book-now-mobile { display: none; }
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 15px;
-    }
-    nav {
-        display: none;
-        margin-top: 10px; /* keep spacing if needed for layout */
-    }
-
-    /* Show hamburger and mobile Book Now on small screens */
-    .hamburger { display: inline-block; }
-    .book-now-mobile { display: inline-block; }
-
-    /* Mobile dropdown container */
-    .mobile-menu {
-        display: none; /* remains hidden until toggled open via JS */
-        width: 100%;
-        background: #ffffff;
-        border-top: 1px solid #eee;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        padding: 12px 0;
-    }
-    /* Open state toggled with JS: element.classList.toggle('open') */
-    .mobile-menu.open {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
-    /* Make links comfortable to tap */
-    .mobile-menu a { display: block; padding: 10px 16px; }
-    .mobile-menu .btn { width: 90%; max-width: 320px; text-align: center; }
-
-    .btn {
-        max-width: 100%;
-        text-align: center;
-    }
-
-    body {
-        overflow-x: hidden;
-    }
-
-    .hero {
-        padding-top: 100px;
-        height: auto;
-    }
-
-    .service-list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .service {
-        width: 90%;
-    }
-}
-
-/* Ensure desktop nav links are hidden on small screens regardless of inline/inline-page styles */
-@media (max-width: 850px) {
-  .nav .links { display: none !important; }
-}
-
-
-
 /* =============================================
    Migrated from inline <style> in index.html
    (with minor fixes for mobile nav specificity)
@@ -249,7 +75,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop
   font-weight:600;
 }
 .mobile-menu a:hover{background:var(--green-100)}
-.mobile-menu.show{display:flex}
+.mobile-menu.open{display:flex}
 .mobile-menu .btn {
   margin-top:6px;
   width:100%;
@@ -279,7 +105,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop
   .mobile-menu {
     display:none;
   }
-  .mobile-menu.show {
+  .mobile-menu.open {
     display:flex;
   }
 }
