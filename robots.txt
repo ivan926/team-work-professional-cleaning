@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://teamworkprofessionalcleaning.com/sitemap.xml
