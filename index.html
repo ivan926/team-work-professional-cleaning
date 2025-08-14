@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRNQ3XB1TJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KRNQ3XB1TJ');
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ShinyClean Services — Professional Home & Office Cleaning</title>
+  <title>Team Work Professional Cleaning — Professional Home & Office Cleaning</title>
   <meta name="description" content="Trusted blue & green cleaning service. House cleaning, office cleaning, move-in/out, and window washing. Get a free quote today." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧹</text></svg>">
-  <meta property="og:title" content="ShinyClean Services" />
+  <meta property="og:title" content="Team Work Professional Cleaning" />
   <meta property="og:description" content="Fresh, spotless, and stress-free cleaning for homes and offices." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1581578017421-cd7c2c32d989" />
+  <link rel="canonical" href="https://ivan926.github.io/team-work-professional-cleaning/" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:site_name" content="Team Work Professional Cleaning" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <style>
     :root{
       --blue-900:#0a2a3f;--blue-800:#0f3953;--blue-700:#104865;--blue-600:#145b7f;--blue-100:#e6f1f7;
@@ -117,11 +135,45 @@
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
   </script>
+  <script>
+    // Optional lead webhooks (Zapier/Make/Airtable). Add URLs when ready.
+    const INTEGRATIONS = {
+      webhook: '',           // e.g., https://hooks.zapier.com/hooks/catch/xxx/yyy
+      secondaryWebhook: ''   // e.g., an Airtable automation webhook URL
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('quoteForm');
+      if (!form) return;
+
+      // Fire-and-forget POSTs to any configured webhooks, then allow Formspree to submit normally.
+      form.addEventListener('submit', async () => {
+        const data = new FormData(form);
+        const payload = Object.fromEntries(data.entries());
+        const endpoints = [INTEGRATIONS.webhook, INTEGRATIONS.secondaryWebhook].filter(Boolean);
+
+        try {
+          await Promise.allSettled(
+            endpoints.map(url =>
+              fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              })
+            )
+          );
+          // Do not prevent default; Formspree submission continues.
+        } catch (err) {
+          console.error('Lead webhook error:', err);
+        }
+      }, { passive: true });
+    });
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "ShinyClean Services",
+    "name": "Team Work Professional Cleaning",
     "image": "https://images.unsplash.com/photo-1581578017421-cd7c2c32d989",
     "url": "https://example.com",
     "telephone": "+1-123-456-7890",
@@ -138,16 +190,27 @@
     "sameAs": []
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Do you bring your own supplies?","acceptedAnswer":{"@type":"Answer","text":"Yes. We bring eco-friendly supplies and equipment. If you have special requests, tell us in the form."}},
+      {"@type":"Question","name":"Are you insured and bonded?","acceptedAnswer":{"@type":"Answer","text":"Yes, we are fully insured and bonded."}},
+      {"@type":"Question","name":"What areas do you service?","acceptedAnswer":{"@type":"Answer","text":"We serve Your City and nearby suburbs. Contact us if you’re just outside the area—often we can accommodate."}}
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header>
     <div class="container nav">
-      <a class="brand" href="#home" aria-label="ShinyClean home">
+      <a class="brand" href="#home" aria-label="Team Work Professional Cleaning home">
         <span class="logo" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M9 8l6 6"/><path d="M12 19l6-6"/><path d="M7 21l10-10"/></svg>
         </span>
-        <span>ShinyClean</span>
+        <span>Team Work Professional Cleaning</span>
       </a>
       <nav class="links" aria-label="Primary">
         <a href="#about">About</a>
@@ -272,7 +335,9 @@
         <h2 class="section-h">Get a Free Quote</h2>
         <p class="section-sub">Tell us about your space and preferred times. We’ll reply quickly.</p>
         <div class="wrap">
-          <form action="https://formspree.io/f/yourformid" method="POST">
+          <form action="https://formspree.io/f/yourformid" method="POST" id="quoteForm">
+            <input type="hidden" name="_subject" value="New cleaning quote request" />
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="field">
               <label for="name">Your Name</label>
               <input id="name" name="name" type="text" placeholder="Jane Doe" required />
@@ -296,6 +361,12 @@
               <textarea id="message" name="message" rows="4" placeholder="Square footage, rooms, preferred dates…" required></textarea>
             </div>
             <button class="btn" type="submit">Send Request</button>
+            <div style="margin-top: 1em;">
+              <a href="https://venmo.com/Arnaldo-ariola" target="_blank" style="display: inline-block; background-color: #3D95CE; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+                Pay with Venmo
+              </a>
+              <p style="font-size: 0.9em; margin-top: 0.5em;">Or search for @Arnaldo-ariola in the Venmo app.</p>
+            </div>
           </form>
           <aside class="aside">
             <div class="row"><div class="icon" aria-hidden="true">📍</div><div>
@@ -311,12 +382,21 @@
         </div>
       </div>
     </section>
+    <!-- PRIVACY -->
+    <section id="privacy">
+      <div class="container">
+        <h2 class="section-h">Privacy Policy</h2>
+        <p class="section-sub">We respect your privacy. We only use the information you submit to contact you about your request and to provide our services. We do not sell your data.</p>
+        <p>By submitting the contact form, you consent to be contacted at the email or phone you provide. You can request deletion of your information at any time by contacting us.</p>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="container mini">
-      <div class="brand"><span class="logo" aria-hidden="true"></span><span>ShinyClean</span></div>
-      <div class="small">© <span id="year"></span> ShinyClean Services. All rights reserved.</div>
+      <div class="brand"><span class="logo" aria-hidden="true"></span><span>Team Work Professional Cleaning</span></div>
+      <div class="small">© <span id="year"></span> Team Work Professional Cleaning. All rights reserved.</div>
+      <div class="small"><a href="#privacy" style="text-decoration:none;color:inherit">Privacy</a></div>
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
