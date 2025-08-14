@@ -100,19 +100,46 @@ main {
     padding: 0 15px;
 }
 
+/* Mobile nav components (hidden by default on desktop) */
+.hamburger { display: none; background: none; border: 0; font-size: 28px; line-height: 1; cursor: pointer; }
+.mobile-menu { display: none; }
+.book-now-mobile { display: none; }
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
         align-items: center;
         padding: 10px 15px;
     }
-
     nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 10px;
+        display: none;
+        margin-top: 10px; /* keep spacing if needed for layout */
     }
+
+    /* Show hamburger and mobile Book Now on small screens */
+    .hamburger { display: inline-block; }
+    .book-now-mobile { display: inline-block; }
+
+    /* Mobile dropdown container */
+    .mobile-menu {
+        display: none; /* remains hidden until toggled open via JS */
+        width: 100%;
+        background: #ffffff;
+        border-top: 1px solid #eee;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 12px 0;
+    }
+    /* Open state toggled with JS: element.classList.toggle('open') */
+    .mobile-menu.open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Make links comfortable to tap */
+    .mobile-menu a { display: block; padding: 10px 16px; }
+    .mobile-menu .btn { width: 90%; max-width: 320px; text-align: center; }
 
     .btn {
         max-width: 100%;
