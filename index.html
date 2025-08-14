@@ -50,16 +50,93 @@
     .nav .links{display:flex;gap:18px;align-items:center}
     .btn{display:inline-block;background:var(--green-600);color:var(--white);padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 6px 16px rgba(17,196,138,.25)}
     .btn:hover{filter:brightness(1.05)}
-    .menu{display:none}
-    /* Mobile drawer hidden by default */
-    .mobile{display:none}
+    .menu, .hamburger{display:none}
+    /* Hamburger for mobile */
+    .hamburger {
+      display:none;
+      background:none;
+      border:none;
+      cursor:pointer;
+      width:40px;
+      height:40px;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      margin-right:12px;
+    }
+    .hamburger:focus { outline: 2px solid var(--green-600);}
+    .hamburger span {
+      display:block;
+      width:26px;
+      height:3px;
+      margin:5px auto;
+      background:var(--blue-700);
+      border-radius:2px;
+      transition:.2s;
+    }
+    /* Mobile menu */
+    .mobile-menu {
+      display:none;
+      flex-direction:column;
+      gap:8px;
+      position:fixed;
+      top:64px;
+      left:0;
+      right:0;
+      background:var(--white);
+      z-index:99;
+      box-shadow:var(--shadow);
+      border-radius:0 0 14px 14px;
+      padding:14px 16px 16px 16px;
+      margin:0 auto;
+      max-width:var(--maxw);
+      width:calc(100vw - 32px);
+    }
+    .mobile-menu a {
+      padding:10px;
+      border-radius:10px;
+      text-align:left;
+      font-weight:600;
+    }
+    .mobile-menu a:hover{background:var(--green-100)}
+    .mobile-menu.show{display:flex}
+    .mobile-menu .btn {
+      margin-top:6px;
+      width:100%;
+      text-align:center;
+      box-sizing:border-box;
+    }
+    /* Position hamburger and Book Now at top on mobile */
     @media (max-width:850px){
       .links{display:none}
-      .menu{display:inline-flex;gap:8px;align-items:center}
-      .mobile{position:fixed;inset:64px 16px auto 16px;background:var(--white);border-radius:14px;box-shadow:var(--shadow);padding:14px;display:none;flex-direction:column;gap:8px}
-      .mobile a{padding:10px;border-radius:10px}
-      .mobile a:hover{background:var(--green-100)}
-      .mobile.show{display:flex}
+      .menu{display:none}
+      .hamburger{display:flex}
+      .nav {
+        flex-wrap:nowrap;
+      }
+      .nav .brand {
+        flex:1 1 auto;
+        min-width:0;
+      }
+      .nav .nav-actions {
+        display:flex;
+        align-items:center;
+        gap:10px;
+      }
+      .book-now-mobile {
+        display:inline-block;
+      }
+      .mobile-menu {
+        display:none;
+      }
+      .mobile-menu.show {
+        display:flex;
+      }
+    }
+    @media (min-width:851px){
+      .book-now-mobile {
+        display:none !important;
+      }
     }
     /* Hero */
     .hero{position:relative;isolation:isolate}
@@ -116,18 +193,18 @@
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
   <script>
-    // Mobile menu toggle
+    // Mobile menu toggle for hamburger
     function toggleMenu(){
-      const menu = document.getElementById('mobileMenu');
-      const btn = document.querySelector('button.menu');
+      const menu = document.getElementById('mobileMenu2');
+      const btn = document.querySelector('button.hamburger');
       const willShow = !menu.classList.contains('show');
       menu.classList.toggle('show');
       if (btn) btn.setAttribute('aria-expanded', String(willShow));
     }
     // Close mobile menu on nav click
     function closeMenu(){
-      const menu = document.getElementById('mobileMenu');
-      const btn = document.querySelector('button.menu');
+      const menu = document.getElementById('mobileMenu2');
+      const btn = document.querySelector('button.hamburger');
       menu.classList.remove('show');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
@@ -210,9 +287,16 @@
         <a href="#testimonials">Reviews</a>
         <a href="#contact" class="btn">Book Now</a>
       </nav>
-      <button class="menu btn ghost" onclick="toggleMenu()" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
+      <div class="nav-actions">
+        <button class="hamburger" onclick="toggleMenu()" aria-controls="mobileMenu2" aria-expanded="false" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="#contact" class="btn book-now-mobile" style="margin-left:8px;">Book Now</a>
+      </div>
     </div>
-    <div id="mobileMenu" class="mobile container" role="dialog" aria-label="Mobile navigation">
+    <div id="mobileMenu2" class="mobile-menu" role="dialog" aria-label="Mobile navigation">
       <a href="#about" onclick="closeMenu()">About</a>
       <a href="#services" onclick="closeMenu()">Services</a>
       <a href="#testimonials" onclick="closeMenu()">Reviews</a>
