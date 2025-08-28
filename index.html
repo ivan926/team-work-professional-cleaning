@@ -197,17 +197,42 @@
     function toggleMenu(){
       const menu = document.getElementById('mobileMenu2');
       const btn = document.querySelector('button.hamburger');
+      if (!menu) return;
       const willShow = !menu.classList.contains('open');
       menu.classList.toggle('open');
       if (btn) btn.setAttribute('aria-expanded', String(willShow));
     }
-    // Close mobile menu on nav click
+
+    // Force-close the mobile menu
     function closeMenu(){
       const menu = document.getElementById('mobileMenu2');
       const btn = document.querySelector('button.hamburger');
+      if (!menu) return;
       menu.classList.remove('open');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
+
+    // Close when clicking outside the menu or button
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu2');
+      const btn = document.querySelector('button.hamburger');
+      if (!menu) return;
+      const clickedInsideMenu = menu.contains(e.target);
+      const clickedOnButton  = btn && btn.contains(e.target);
+      if (menu.classList.contains('open') && !clickedInsideMenu && !clickedOnButton) {
+        closeMenu();
+      }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 850) closeMenu();
+    });
   </script>
   <script>
     // Optional lead webhooks (Zapier/Make/Airtable). Add URLs when ready.
@@ -309,7 +334,7 @@
     <!-- HERO -->
     <section id="home" class="hero">
       <div class="container wrap">
-        <div>
+        <div id="span-tag">
           <span class="tag">Trusted • Insured • Satisfaction Guaranteed</span>
           <h1>Residential, Commercial &amp; Construction Cleaning in Utah</h1>
           <p class="sub">We deliver hotel‑level clean with eco‑friendly products. One‑time deep cleans, recurring maintenance, and move‑in/out packages tailored to your space.</p>
@@ -338,7 +363,8 @@
           <div class="card">
             <div class="icon" aria-hidden="true">🏆</div>
             <h3>Experienced</h3>
-            <p>Hundreds of happy clients and years of proven systems for spotless results.</p>
+            <!-- <p>Hundreds of happy clients and years of proven systems for spotless results.</p> -->
+            <p>Years of proven systems for spotless results.</p>
           </div>
           <div class="card">
             <div class="icon" aria-hidden="true">🌿</div>
@@ -380,11 +406,11 @@
             <h3>Office Cleaning</h3>
             <p>Dust‑free desks, sanitized restrooms, and refreshed break rooms.</p>
           </div>
-          <div class="card">
+          <!-- <div class="card">
             <div class="icon" aria-hidden="true">🪟</div>
             <h3>Window Washing</h3>
             <p>Streak‑free interior/exterior windows for brighter rooms.</p>
-          </div>
+          </div> -->
           <div class="card">
             <div class="icon" aria-hidden="true">🐾</div>
             <h3>Pet‑Friendly</h3>
@@ -394,8 +420,8 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="testimonials">
+    <!-- TESTIMONIALS adding google profile in future-->
+    <!-- <section id="testimonials" class="testimonials">
       <div class="container">
         <h2 class="section-h">Happy Clients</h2>
         <div class="t-grid">
@@ -404,7 +430,7 @@
           <blockquote class="quote">“Staff is friendly, on‑time, and detail oriented. 10/10.”<div class="name">— Aisha K.</div></blockquote>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- CONTACT -->
     <section id="contact" class="contact">
@@ -454,7 +480,7 @@
             </div></div>
             <div class="row"><div class="icon" aria-hidden="true">📞</div><div>
               <a href="tel:+13854727002">(385) 472-7002</a><br/>
-              <a href="mailto:arnaldo.arriola@teamworkcleaners.com">arnaldo.arriola@teamworkcleaners.com</a>
+              <a href="mailto:contact@teamworkcleaners.com">arnaldo.arriola@teamworkcleaners.com</a>
             </div></div>
           </aside>
         </div>
