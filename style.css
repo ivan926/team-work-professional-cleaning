@@ -126,6 +126,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop
     flex:1 1 auto;
     min-width:0;
   }
+  /* Css rule to remove underlines set by the browser */
+  a {
+  text-decoration: none;  /* remove the underline */
+  color: var(--blue-700); /* or any custom color */
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;        /* underline on hover */
+  color: var(--green-600);           /* or use a highlight color */
+  cursor: pointer;                   /* ensures pointer shows */
+}
   .nav .nav-actions {
     display:flex;
     align-items:center;
