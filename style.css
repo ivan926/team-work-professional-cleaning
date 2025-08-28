@@ -11,7 +11,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;line-height:1.6;color:var(--text);background:var(--bg)}
-a{color:inherit}
+a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .container{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
 /* Header */
@@ -84,6 +84,21 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop
   text-align:center;
   box-sizing:border-box;
 }
+
+
+
+/* Global hover/focus styles for links (excluding .btn) */
+a:hover:not(.btn),
+a:focus:not(.btn),
+.nav a:hover:not(.btn),
+.nav a:focus:not(.btn) {
+  color: var(--green-600);  /* highlight color on hover */
+  text-decoration: none;   /* no underline */
+  cursor: pointer;
+}
+
+
+
 /* Position hamburger and Book Now at top on mobile */
 @media (max-width:850px){
   .nav .links{display:none !important}
@@ -127,17 +142,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop
     min-width:0;
   }
   /* Css rule to remove underlines set by the browser */
-  a {
-  text-decoration: none;  /* remove the underline */
-  color: var(--blue-700); /* or any custom color */
-}
 
-a:hover,
-a:focus {
-  text-decoration: underline;        /* underline on hover */
-  color: var(--green-600);           /* or use a highlight color */
-  cursor: pointer;                   /* ensures pointer shows */
-}
+
+
   .nav .nav-actions {
     display:flex;
     align-items:center;
@@ -155,10 +162,11 @@ a:focus {
     display:flex;
   }
 }
-@media (min-width:851px){
+@media (min-width:851px) {
   .book-now-mobile {
-    display:none !important;
+    display: none !important;
   }
+  /* (hover/focus styles removed as requested) */
 }
 /* Hero */
 .hero{position:relative;isolation:isolate}
